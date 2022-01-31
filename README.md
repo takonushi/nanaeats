@@ -16,9 +16,9 @@
 | -------------------- | ---------- | ------------------------------ |
 | name                 | string     | null: false                    |
 | price                | integer    | null: false                    |
-| retailer             | string     | null: false                    |
-| explanation          | text       | null: false                    |
-|quantity              | integer   | num: false                      |
+| retailer             | string     |                                |
+| explanation          | text       |                                |
+| quantity             | integer    | num: false                     |
 | user                 | references | null: false, foreign_key: true |
 
 ### Association
