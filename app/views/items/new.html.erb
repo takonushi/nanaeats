@@ -1,1 +1,73 @@
-<h1>新規商品登録</h1>
+<div>
+  <h1>商品マスターの登録</h1>
+ <div>
+    <h2>商品の情報を入力</h2>
+    <%= form_with model: @item, url:items_path, local: true do |f| %>
+
+    <%# 商品画像 %>
+    <div class="img-upload">
+        商品画像
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /商品画像 %>
+
+    <%# 商品名と商品説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          商品の説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" %>
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+<%# 購入先 %>
+    <div class="sell-price">
+        <span>購入先<br></span>
+	<span class="indispensable">必須</span>
+        </div>
+          <%= f.text_field :retailer, class:"price-input", id:"item-price", placeholder:"例）西友ネットスーパー" %>
+        </div>
+ <%# /購入先 %>
+
+    <%# 販売価格 %>
+    <div class="sell-price">
+        <span>価格<br>(¥1〜99,999)</span>
+     </div>
+     <div>
+       <div class="price-content">
+        <span class="indispensable">必須</span>
+        </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price2", placeholder:"例）300" %>
+        </div>
+    <%# /販売価格 %>
+
+    <%# 在庫 %>
+    <div class="sell-price">
+        <span>在庫<br>(1〜100)</span>
+     </div>
+        <span class="indispensable">必須</span>
+          <span class="sell-yen">個</span>
+          <%= f.text_field :quantity, class:"price-input", id:"item-price3", placeholder:"例）5" %>
+        </div>
+    <%# /販売価格 %>
+      <%= f.submit "登録する" ,class:"sell-btn" %>
+      <%= link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+</div>

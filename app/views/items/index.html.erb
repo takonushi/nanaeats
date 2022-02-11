@@ -12,4 +12,15 @@
   </div>
 <% end %>
 
-<p>在庫有り商品一覧</p>
+<p>注文可能商品一覧</p>
+<% if user_signed_in? %>
+  <% @items.each do |item| %>
+    <%= image_tag item.image.variant(resize: '100x100') %>
+    <div>商品名</div>
+    <%= item.name %>
+    <div>商品説明</div>
+    <%= item.explanation %>
+    <div>在庫</div>
+    <%= item.quantity %>
+  <% end %>
+<% end %>

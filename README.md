@@ -15,7 +15,7 @@
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | name                 | string     | null: false                    |
-| price                | integer    | null: false                    |
+| price                | integer    |                                |
 | retailer             | string     |                                |
 | explanation          | text       |                                |
 | quantity             | integer    | num: false                     |
@@ -23,12 +23,14 @@
 
 ### Association
  - belongs_to :user
- - has_many :orders
+ - has_one :order
 
 ## orders テーブル
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| order_date           | date       | null: false |
+| order_date           | date       | null: false                    |
+| order_comment        | text       |                                |
+| used_item            | integer    | null: false
 | user                 | references | null: false, foreign_key: true |
 | item                 | references | null: false, foreign_key: true |
 
