@@ -1,7 +1,8 @@
-<h1>NANA EATS TOP</h1>
+<div class="top_title">NANA EATS TOP</div>
 
 <% if user_signed_in? %>
   <div class="nav__right">
+    <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
     <%= link_to "マスター管理", new_item_path, class: :nav__btn %>
   </div>
@@ -15,9 +16,11 @@
 <p>注文可能商品一覧</p>
 <% if user_signed_in? %>
   <% @items.each do |item| %>
-    <%= image_tag item.image.variant(resize: '100x100') %>
-    <div>商品名</div>
-    <%= item.name %>
+    <div class="item_image">
+      <%= image_tag item.image.variant(resize: '100x100') %>
+    </div>
+      <div>商品名</div>
+        <%= item.name %>
     <div>商品説明</div>
     <%= item.explanation %>
     <div>在庫</div>
