@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: :index
   def index
     @items = Item.all
   end
@@ -11,11 +12,11 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
+    else
+      render :new
     end
-  #  else
-  #  render :new
-  #  上記記載を入れると登録が出来なくなる不具合発生中
   end
+
   
   private
   def item_params

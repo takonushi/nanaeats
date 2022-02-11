@@ -17,13 +17,12 @@
 <% if user_signed_in? %>
   <% @items.each do |item| %>
     <div class="item_image">
-      <%= image_tag item.image.variant(resize: '100x100') %>
+      <%= image_tag item.image.variant(resize: '150x150') %>
     </div>
-      <div>商品名</div>
-        <%= item.name %>
-    <div>商品説明</div>
-    <%= item.explanation %>
-    <div>在庫</div>
-    <%= item.quantity %>
+      <div class=item-name>商品名:<%= item.name %></div>
+      <div>商品説明:</div>
+      <%= item.explanation %>
+      <div>在庫:<%= item.quantity %></div>
+    </div>
   <% end %>
 <% end %>

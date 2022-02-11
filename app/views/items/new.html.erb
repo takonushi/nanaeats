@@ -4,7 +4,7 @@
  <div>
     <h2>商品の情報を入力</h2>
     <%= form_with model: @item, url:items_path, local: true do |f| %>
-
+    <%= render 'shared/error_messages', model: f.object %>
     <%# 商品画像 %>
     <div class="img-upload">
         商品画像
@@ -37,7 +37,7 @@
 <%# 購入先 %>
     <div class="sell-price">
         <span>購入先<br></span>
-	<span class="indispensable">必須</span>
+	<span class="indispensable">(任意)</span>
         </div>
           <%= f.text_field :retailer, class:"price-input", id:"item-price", placeholder:"例）西友ネットスーパー" %>
         </div>
@@ -52,7 +52,7 @@
         <span class="indispensable">(任意)</span>
         </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price2", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input2", id:"item-price2", placeholder:"例）300" %>
         </div>
     <%# /販売価格 %>
 
@@ -62,7 +62,7 @@
      </div>
         <span class="indispensable">必須</span>
           <span class="sell-yen">個</span>
-          <%= f.text_field :quantity, class:"price-input", id:"item-price3", placeholder:"例）5" %>
+          <%= f.text_field :quantity, class:"price-input3", id:"item-price3", placeholder:"例）5" %>
         </div>
     <%# /販売価格 %>
       <%= f.submit "登録する" ,class:"sell-btn" %>
