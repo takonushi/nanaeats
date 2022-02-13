@@ -16,9 +16,16 @@
 <p>注文可能商品一覧</p>
 <% if user_signed_in? %>
   <% @items.each do |item| %>
-    <div class="item_image">
-      <%= image_tag item.image.variant(resize: '150x150') %>
-    </div>
+    <%= link_to item_path(item.id) do %>
+      <div class="item_image">
+        <%= image_tag item.image.variant(resize: '150x150') %>
+        <% if item.quantity == 0 %>
+          <div class="not_order">
+            在庫無し
+          </div>
+        <% end %>
+      </div>
+    <% end %>
       <div class=item-name>商品名:<%= item.name %></div>
       <div>商品説明:</div>
       <%= item.explanation %>

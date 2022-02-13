@@ -25,3 +25,47 @@
 .item-name{
   color: blue;
 }
+
+.item_image{
+  position: relative;
+}
+
+.not_order{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 30px;
+  color: red;
+}
+
+.submit-btn{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid blue;
+  color: white;
+  background-color: orange;
+}
+
+.order-btn{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid blue;
+  color: green;
+  background-color: greenyellow;
+}
+
+.edit-btn{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid green;
+  color: blue;
+  background-color: lightskyblue;
+}
+
+.delete-btn{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid red;
+  color: pink;
+  background-color: lightcoral;
+}

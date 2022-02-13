@@ -1,0 +1,24 @@
+<div class="top_title"><%= @item.name %></div>
+<div class="item_image">
+  <%= image_tag @item.image.variant(resize: '300x300') %>
+  <div class="not_order">
+    在庫無し
+  </div>
+</div>
+
+<div>[商品説明]</div>
+<div><%= @item.explanation %></div>
+<div>[購入先]</div>
+<div><%= @item.retailer %></div>
+<div>●在庫:<%= @item.quantity %></div>
+<div>[情報登録者]</div>
+<div><%= @item.user.nickname %></div>
+<br>
+<% if @item.quantity != 0 %>
+  <%= link_to "注文画面に進む", "#" ,class:"order-btn"%>
+<% end %>
+
+<% if @item.user.id == current_user.id %>
+  <%= link_to "商品を編集する", "#" ,class:"edit-btn" %>
+  <%= link_to "商品を削除する", "#" ,class:"delete-btn" %>
+<% end %>
