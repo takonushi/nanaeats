@@ -15,21 +15,28 @@
 
 <p>注文可能商品一覧</p>
 <% if user_signed_in? %>
-  <% @items.each do |item| %>
-    <%= link_to item_path(item.id) do %>
-      <div class="item_image">
-        <%= image_tag item.image.variant(resize: '150x150') %>
-        <% if item.quantity == 0 %>
-          <div class="not_order">
-            在庫無し
+  <div class="image_wrapper">
+    <% @items.each do |item| %>
+      <div class="item">
+        <%= link_to item_path(item.id) do %>
+          <div class="item_image">
+            <%= image_tag item.image.variant(resize: '200x200') %>
+            <% if item.quantity == 0 %>
+              <div class="not_order">
+                在庫無し
+              </div>
+            <% end %>
           </div>
         <% end %>
+        <div class=item-name>
+          商品名:<%= item.name %><br>
+        </div>
+        <div class=item-text>
+          商品説明:<br>
+          <%= item.explanation %>
+          在庫:<%= item.quantity %><br>
+        </div>
       </div>
     <% end %>
-      <div class=item-name>商品名:<%= item.name %></div>
-      <div>商品説明:</div>
-      <%= item.explanation %>
-      <div>在庫:<%= item.quantity %></div>
-    </div>
-  <% end %>
+  </div>
 <% end %>

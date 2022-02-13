@@ -1,9 +1,11 @@
 <div class="top_title"><%= @item.name %></div>
 <div class="item_image">
   <%= image_tag @item.image.variant(resize: '300x300') %>
-  <div class="not_order">
-    在庫無し
-  </div>
+  <% if @item.quantity == 0 %>
+    <div class="not_order">
+      在庫無し
+    </div>
+  <% end %>
 </div>
 
 <div>[商品説明]</div>
