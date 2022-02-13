@@ -13,19 +13,19 @@ RSpec.describe Item, type: :model do
       end
 
       it '金額は空でも登録ができる' do
-        @item.price = ""
+        @item.price = ''
         expect(@item).to be_valid
       end
 
       it '商品説明は空でも登録ができる' do
-        @item.explanation = ""
+        @item.explanation = ''
         expect(@item).to be_valid
       end
     end
 
     context '内容に問題がある場合' do
       it '商品名が空では登録ができない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
@@ -33,27 +33,25 @@ RSpec.describe Item, type: :model do
       it '商品画像が未登録では登録ができない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")        
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
       it '金額に半角数値以外の値が入っている場合登録ができない' do
-        @item.price = "10,000"
+        @item.price = '10,000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
-
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
 
       it '金額に10000を超える値が入っている場合登録ができない' do
-        @item.price = "30000"
+        @item.price = '30000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
-        
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
 
       it 'ユーザーが紐づいていない場合登録ができない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")        
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

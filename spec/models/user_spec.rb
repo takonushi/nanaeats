@@ -14,13 +14,13 @@ RSpec.describe User, type: :model do
 
     context '内容に問題がある場合' do
       it 'nicknameが空だと保存ができないこと' do
-        @user.nickname = ""
+        @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
 
       it 'メールアドレスが空だと保存ができないこと' do
-        @user.email = ""
+        @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
