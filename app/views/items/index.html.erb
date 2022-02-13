@@ -1,0 +1,28 @@
+<div class="top_title">NANA EATS TOP</div>
+
+<% if user_signed_in? %>
+  <div class="nav__right">
+    <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
+    <%= link_to "マスター管理", new_item_path, class: :nav__btn %>
+  </div>
+<% else %>
+  <div class="nav__right">
+    <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+    <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+  </div>
+<% end %>
+
+<p>注文可能商品一覧</p>
+<% if user_signed_in? %>
+  <% @items.each do |item| %>
+    <div class="item_image">
+      <%= image_tag item.image.variant(resize: '150x150') %>
+    </div>
+      <div class=item-name>商品名:<%= item.name %></div>
+      <div>商品説明:</div>
+      <%= item.explanation %>
+      <div>在庫:<%= item.quantity %></div>
+    </div>
+  <% end %>
+<% end %>
