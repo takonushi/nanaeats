@@ -25,12 +25,13 @@
  - belongs_to :user
  - has_one :order
 
-## orders テーブル
+## orders テーブル order_statusはActiveHashによる実装
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | order_date           | date       | null: false                    |
 | order_comment        | text       |                                |
 | order_status         | integer    | null: false
+| order_status         | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 | item                 | references | null: false, foreign_key: true |
 
