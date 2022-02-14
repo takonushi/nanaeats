@@ -1,11 +1,12 @@
 <div class="top_title">
   <h1>商品マスターの登録</h1>
 </div>
- <div>
-    <div>商品の情報を入力      <%= link_to 'もどる', root_path, class:"back-btn" %></div>
-    <%= form_with model: @item, url:items_path, local: true do |f| %>
+
+<div>
+  <div>商品の情報を入力  <%= link_to 'もどる', root_path, class:"back-btn" %></div>
+  <%= form_with model: @item, url:items_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
-    <%# 商品画像 %>
+  
     <div class="img-upload">
         商品画像
         <p>
