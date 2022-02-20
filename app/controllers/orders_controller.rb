@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    binding.pry
     if @order.save
       redirect_to root_path
     else
@@ -25,5 +26,5 @@ def set_item
 end
 
 def order_params
-  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today, order_status: 1)
+  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today, order_status_id: 1)
 end
