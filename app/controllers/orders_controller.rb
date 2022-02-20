@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    binding.pry
     if @order.save
       LineNotify.send('料理の注文が入りました!!')
       redirect_to root_path
