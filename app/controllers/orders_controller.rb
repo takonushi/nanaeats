@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     binding.pry
     if @order.save
+      LineNotify.send('料理の注文が入りました!!')
       redirect_to root_path
     else
       render :index
