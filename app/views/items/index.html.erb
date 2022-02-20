@@ -13,30 +13,53 @@
   </div>
 <% end %>
 
-<p>注文可能商品一覧</p>
 <% if user_signed_in? %>
+  <p>注文中の商品</p>
   <div class="image_wrapper">
-    <% @items.each do |item| %>
-      <div class="item">
-        <%= link_to item_path(item.id) do %>
+    <% @orders.each do |order| %>
+        <div class="item">
+        <%= link_to edit_item_order_path(order.item.id,order.id) do %>
           <div class="item_image">
-            <%= image_tag item.image.variant(resize: '200x200') %>
-            <% if item.quantity == 0 %>
-              <div class="not_order">
-                在庫無し
-              </div>
-            <% end %>
+            <%= image_tag order.item.image.variant(resize: '200x200') %>
           </div>
         <% end %>
         <div class=item-name>
-          商品名:<%= item.name %><br>
+          商品名:<%= order.item.name %><br>
         </div>
         <div class=item-text>
           商品説明:<br>
-          <%= item.explanation %>
-          在庫:<%= item.quantity %><br>
+          <%= order.item.explanation %><br>
+          在庫:<%= order.item.quantity %><br>
         </div>
       </div>
+    <% end %>
+  </div>
+  <p>注文可能商品一覧</p>
+  <div class="image_wrapper">
+    <% @items.each do |item| %>
+      <%# 注文中の商品以外を表示させる %>
+      <% if item.order == nil %>
+        <div class="item">
+          <%= link_to item_path(item.id) do %>
+            <div class="item_image">
+              <%= image_tag item.image.variant(resize: '200x200') %>
+              <% if item.quantity == 0 %>
+                <div class="not_order">
+                  在庫無し
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <div class=item-name>
+            商品名:<%= item.name %><br>
+          </div>
+          <div class=item-text>
+            商品説明:<br>
+            <%= item.explanation %><br>
+            在庫:<%= item.quantity %><br>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>

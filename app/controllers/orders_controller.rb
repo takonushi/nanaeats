@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  before_action :set_item, only: [:index, :create, :edit]
   def index
     @order = Order.new
   end
@@ -12,6 +12,11 @@ class OrdersController < ApplicationController
       render :index
     end
   end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
 end
 
 private
