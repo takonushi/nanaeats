@@ -1,0 +1,13 @@
+<div class="top_title">
+  <h1>下記の注文が入ってます。</h1>
+</div>
+
+<%= @item.name %>
+<%= @order.order_comment %>
+<%= @order.order_status.name %>
+
+<%# 最終的にはFormオブジェクトモデルで実装するのが望ましい%>
+  <%= form_with model: @order, url:'#', local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%= f.collection_select(:order_status_id, OrderStatus.all, :id, :name, {}, {class:"select-box", id:"order-status"}) %>
+  <% end %>

@@ -1,17 +1,23 @@
 class OrdersController < ApplicationController
-  before_action :set_item, only: [:index, :create]
+  before_action :set_item, only: [:index, :create, :edit]
   def index
     @order = Order.new
   end
 
   def create
     @order = Order.new(order_params)
+    binding.pry
     if @order.save
       redirect_to root_path
     else
       render :index
     end
   end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
 end
 
 private
@@ -20,5 +26,5 @@ def set_item
 end
 
 def order_params
-  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today, order_status: 1)
+  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today, order_status_id: 1)
 end
