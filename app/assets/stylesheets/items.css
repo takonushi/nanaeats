@@ -83,6 +83,11 @@
   margin: 10px 0px;
 }
 
+.preview-image{
+  width: 150px;
+  height: 150px;
+}
+
 .items-text, .order-text{
   width: 30%;
   height: 100px;
