@@ -83,13 +83,16 @@
   margin: 10px 0px;
 }
 
-.items-text{
+.preview-image{
+  width: 150px;
+  height: 150px;
+}
+
+.items-text, .order-text{
   width: 30%;
   height: 100px;
   margin: 10px 0px;
 }
-
-
 
 .submit-btn{
   width: 200px;
