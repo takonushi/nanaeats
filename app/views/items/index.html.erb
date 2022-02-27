@@ -21,6 +21,23 @@
         <%= link_to edit_item_order_path(order.item.id,order.id) do %>
           <div class="item_image">
             <%= image_tag order.item.image.variant(resize: '200x200') %>
+            <% if order.order_status_id == 1 %>
+              <div class="not_order">
+                注文中
+              </div>
+            <% elsif order.order_status_id == 2 %>
+              <div class="not_order">
+                注文承諾済み
+              </div>
+            <% elsif order.order_status_id == 3 %>
+              <div class="not_order">
+                調理完了済み
+              </div>
+            <% elsif order.order_status_id == 4 %>
+              <div class="not_order">
+                キャンセル処理
+              </div>
+            <% end %>
           </div>
         <% end %>
         <div class=item-name>
