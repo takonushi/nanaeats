@@ -125,3 +125,31 @@
   color: pink;
   background-color: lightcoral;
 }
+
+.nav__right{
+  display: flex;
+}
+
+.menu_btn{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid red;
+  color: pink;
+  background-color: lightcoral;
+}
+
+.menu_btn2{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid green;
+  color: green;
+  background-color: greenyellow;
+}
+
+.menu_btn3{
+  width: 200px;
+  padding: 15px;
+  border: 1px solid green;
+  color: green;
+  background-color: greenyellow;
+}
