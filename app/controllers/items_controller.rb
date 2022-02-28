@@ -27,6 +27,12 @@ class ItemsController < ApplicationController
     item.destroy if current_user.id == item.user_id && item.order.nil?
     redirect_to root_path
   end
+
+  def destroy_all_order
+    binding.pry
+    Order.destroy_all if user_signed_in?
+    redirect_to root_path
+  end
   private
 
   def item_params

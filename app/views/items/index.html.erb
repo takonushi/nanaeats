@@ -1,15 +1,20 @@
 <div class="top_title">NANA EATS TOP</div>
 
 <% if user_signed_in? %>
+  <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
   <div class="nav__right">
-    <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
-    <%= link_to "マスター管理", new_item_path, class: :nav__btn %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :menu_btn %>
+      <%= link_to "マスター管理", new_item_path, class: :menu_btn2 %>
+      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class: :menu_btn3 %>
   </div>
 <% else %>
   <div class="nav__right">
-    <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-    <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+    <div class="menu-btn">
+      <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+    </div>
+    <div class="menu-btn2">
+      <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+    </div>
   </div>
 <% end %>
 
