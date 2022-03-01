@@ -1,87 +1,95 @@
-<div class="top_title">NANA EATS TOP</div>
-
 <% if user_signed_in? %>
   <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
   <div class="nav__right">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :menu_btn %>
-      <%= link_to "マスター管理", new_item_path, class: :menu_btn2 %>
-      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class: :menu_btn3 %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :"btn btn-primary btn-lg" %>
+      <%= link_to "マスター管理", new_item_path, class: :"btn btn-success btn-lg" %>
+      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class: :"btn btn-danger btn-lg" %>
   </div>
 <% else %>
   <div class="nav__right">
     <div class="menu-btn">
-      <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+      <%= link_to "ログイン", new_user_session_path, class: :"btn btn-primary btn-lg" %>
     </div>
     <div class="menu-btn2">
-      <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+      <%= link_to "新規登録", new_user_registration_path, class: :"btn btn-success btn-lg" %>
     </div>
   </div>
 <% end %>
 
 <% if user_signed_in? %>
   <p>注文中の商品</p>
-  <div class="image_wrapper">
-    <% @orders.each do |order| %>
-        <div class="item">
-        <%= link_to edit_item_order_path(order.item.id,order.id) do %>
-          <div class="item_image">
-            <%= image_tag order.item.image.variant(resize: '200x200') %>
-            <% if order.order_status_id == 1 %>
-              <div class="not_order">
-                注文中
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @orders.each do |order| %>
+          <div class="col">
+            <div class="card shadow-sm">
+              <%= link_to edit_item_order_path(order.item.id,order.id) do %>
+                <div class="bd-placeholder-img card-img-top">        
+                  <%= image_tag order.item.image.variant(resize: '200x200') %>
+                </div>
+                <% if order.order_status_id == 1 %>
+                  <div class="not_order">
+                    注文中
+                  </div>
+                <% elsif order.order_status_id == 2 %>
+                  <div class="not_order">
+                    注文承諾済み
+                  </div>
+                <% elsif order.order_status_id == 3 %>
+                  <div class="not_order">
+                    調理完了済み
+                  </div>
+                <% elsif order.order_status_id == 4 %>
+                  <div class="not_order">
+                    キャンセル処理
+                  </div>
+                <% end %>
+              <% end %>
+              <div class="card-body">
+                商品名:<%= order.item.name %><br>
               </div>
-            <% elsif order.order_status_id == 2 %>
-              <div class="not_order">
-                注文承諾済み
-              </div>
-            <% elsif order.order_status_id == 3 %>
-              <div class="not_order">
-                調理完了済み
-              </div>
-            <% elsif order.order_status_id == 4 %>
-              <div class="not_order">
-                キャンセル処理
-              </div>
-            <% end %>
+              <p class="card-text">
+                商品説明:
+                <%= order.item.explanation %></p>
+              <p class="card-text">
+                在庫:<%= order.item.quantity %></p>
+            </div>
           </div>
         <% end %>
-        <div class=item-name>
-          商品名:<%= order.item.name %><br>
-        </div>
-        <div class=item-text>
-          商品説明:<br>
-          <%= order.item.explanation %><br>
-          在庫:<%= order.item.quantity %><br>
-        </div>
       </div>
-    <% end %>
   </div>
   <p>注文可能商品一覧</p>
-  <div class="image_wrapper">
-    <% @items.each do |item| %>
-      <%# 注文中の商品以外を表示させる %>
-      <% if item.order == nil %>
-        <div class="item">
-          <%= link_to item_path(item.id) do %>
-            <div class="item_image">
-              <%= image_tag item.image.variant(resize: '200x200') %>
-              <% if item.quantity == 0 %>
-                <div class="not_order">
-                  在庫無し
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @items.each do |item| %>
+          <%# 注文中の商品以外を表示させる %>
+          <% if item.order == nil %>
+            <div class="col">
+              <div class="card shadow-sm">
+                <%= link_to item_path(item.id) do %>
+                  <div class="bd-placeholder-img card-img-top">        
+                    <%= image_tag item.image.variant(resize: '200x200') %>
+                    <% if item.quantity == 0 %>
+                      <div class="not_order">
+                        在庫無し
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                <div class="card-body">
+                  商品名:<%= item.name %><br>
                 </div>
-              <% end %>
+                <p class="card-text">
+                  商品説明:
+                  <%= item.explanation %></p>
+                <p class="card-text">
+                  在庫:<%= item.quantity %></p>
+              </div>
             </div>
           <% end %>
-          <div class=item-name>
-            商品名:<%= item.name %><br>
-          </div>
-          <div class=item-text>
-            商品説明:<br>
-            <%= item.explanation %><br>
-            在庫:<%= item.quantity %><br>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+        <% end %>
+      </div>
+    </div>
 <% end %>
