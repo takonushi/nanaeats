@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      item:
+        name: 商品名
+        quantity: 在庫
+        image: 商品画像
+        price: 金額
