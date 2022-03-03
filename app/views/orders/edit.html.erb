@@ -1,8 +1,8 @@
 <div class="top_title">
   <h1>下記の注文が入ってます。</h1>
 </div>
-
-<%= @item.name %>
+<div class="container">
+  <%= @item.name %>
   <%= form_with model:@item_order, url:item_order_path(@order.id), local: true, method: :patch do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     注文ステータス:<br>
@@ -13,5 +13,6 @@
     残在庫:<br>
     <%= f.text_field :quantity, class:"price-input3", id:"item-price3", placeholder:@item.quantity  %>
     <br><br>
-    <%= f.submit "ステータス更新" ,class:"submit-btn" %>
+    <%= f.submit "ステータス更新" ,class: :"btn btn-info btn-lg" %>
   <% end %>
+</div>

@@ -1,9 +1,11 @@
 <div class="top_title"><%= @item.name %></div>
-<%= form_with model: @order, url:item_orders_path, local: true do |f| %>
-<%= render 'shared/error_messages', model: f.object %>
-  <div>注文コメント(任意)</div>
-  <div>
-    <%= f.text_area :order_comment, class:"order-text", id:"order-info", placeholder:"注文に対する要望・コメント" %>
-  </div>
-  <%= f.submit "注文する" ,class:"submit-btn" %>
-<% end %>
+<div class="container">
+  <%= form_with model: @order, url:item_orders_path, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+    <div>注文コメント(任意)</div>
+    <div>
+      <%= f.text_area :order_comment, class:"order-text",id:"order-info", placeholder:"注文に対する要望・コメント" %>
+    </div>
+    <%= f.submit "注文する" ,class: :"btn btn-primary btn-lg"  %>
+  <% end %>
+</div>
