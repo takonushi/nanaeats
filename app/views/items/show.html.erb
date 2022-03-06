@@ -11,6 +11,8 @@
 
   <div>[商品説明]</div>
   <div><%= @item.explanation %></div>
+  <div>[商品分類]</div>
+  <div><%= @item.item_class.name%>
   <div>[購入先]</div>
   <div><%= @item.retailer %></div>
   <div>●在庫:<%= @item.quantity %></div>

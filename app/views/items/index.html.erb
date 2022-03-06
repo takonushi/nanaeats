@@ -28,32 +28,21 @@
                 <div class="bd-placeholder-img card-img-top">        
                   <%= image_tag order.item.image.variant(resize: '200x200') %>
                 </div>
-                <% if order.order_status_id == 1 %>
-                  <div class="not_order">
-                    注文中
-                  </div>
-                <% elsif order.order_status_id == 2 %>
-                  <div class="not_order">
-                    注文承諾済み
-                  </div>
-                <% elsif order.order_status_id == 3 %>
-                  <div class="not_order">
-                    調理完了済み
-                  </div>
-                <% elsif order.order_status_id == 4 %>
-                  <div class="not_order">
-                    キャンセル処理
-                  </div>
-                <% end %>
+                <div class="not_order">
+                  <%= order.order_status.name %>
+                </div>
               <% end %>
               <div class="card-body">
                 商品名:<%= order.item.name %><br>
               </div>
-              <p class="card-text">
+              <div class="card-body">
+                分類:<%= order.item.item_class.name %><br>
+              </div>
+              <div class="card-body">
                 商品説明:
-                <%= order.item.explanation %></p>
-              <p class="card-text">
-                在庫:<%= order.item.quantity %></p>
+                <%= order.item.explanation %></div>
+              <div class="card-body">
+                在庫:<%= order.item.quantity %></div>
             </div>
           </div>
         <% end %>
@@ -81,11 +70,14 @@
                 <div class="card-body">
                   商品名:<%= item.name %><br>
                 </div>
-                <p class="card-text">
+                <div class="card-body">
+                  分類:<%= item.item_class.name %><br>
+                </div>
+                <div class="card-body">
                   商品説明:
-                  <%= item.explanation %></p>
-                <p class="card-text">
-                  在庫:<%= item.quantity %></p>
+                  <%= item.explanation %></div>
+                <div class="card-body">
+                  在庫:<%= item.quantity %></div>
               </div>
             </div>
           <% end %>
