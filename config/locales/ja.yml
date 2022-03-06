@@ -8,3 +8,4 @@ ja:
         quantity: 在庫
         image: 商品画像
         price: 金額
+        item_class_id: 商品分類

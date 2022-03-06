@@ -70,6 +70,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Userを入力してください")
       end
+
+      it '分類が入力されていない場合登録ができない' do
+        @item.item_class_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("商品分類を入力してください")
+      end
     end
   end
 end

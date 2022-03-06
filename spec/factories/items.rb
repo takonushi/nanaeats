@@ -4,6 +4,7 @@ FactoryBot.define do
     price       { '1000' }
     retailer    { 'ネットスーパー' }
     explanation { Faker::Lorem.sentence }
+    item_class_id { Faker::Number.between(from: 0, to: 5) }
     quantity    { Faker::Number.between(from: 0, to: 100) }
     association :user
 

@@ -15,6 +15,7 @@
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | name                 | string     | null: false                    |
+| item_class_id        | integer    | null: false                    |
 | price                | integer    |                                |
 | retailer             | string     |                                |
 | explanation          | text       |                                |
