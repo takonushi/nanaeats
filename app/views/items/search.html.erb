@@ -1,35 +1,20 @@
-<% if user_signed_in? %>
-  <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
-  <div class="nav__right">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :"btn btn-primary btn-lg" %>
-      <%= link_to "マスター管理", new_item_path, class: :"btn btn-success btn-lg" %>
-      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class: :"btn btn-danger btn-lg" %>
-      <%= link_to "詳細検索", search_items_path, class: :"btn btn-info btn-lg" %>
-  </div>
-<% else %>
-  <div class="nav__right">
-    <div class="menu-btn">
-      <%= link_to "ログイン", new_user_session_path, class: :"btn btn-primary btn-lg" %>
-    </div>
-    <div class="menu-btn2">
-      <%= link_to "新規登録", new_user_registration_path, class: :"btn btn-success btn-lg" %>
-    </div>
-  </div>
-<% end %>
-<br>
-<% if user_signed_in? %>
-  <div class='search-bar-contents'>
-    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
-      <%= f.text_field :name, placeholder: '商品名から探す', class: 'input-box' %>
+<h3>検索ページ</h3>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<div class='item-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search_items_path, html: {id: "detailed-search-form"} do |f| %>
+    <div class="search-field">
+      <%= f.label :name, '商品名' %>
       <br>
-      <%= f.label :item_class_id_in, '商品分類:' %>
-      <%= f.collection_check_boxes(:item_class_id_in, ItemClass.all, :id, :name ) %>
-      <%= f.label :submit, class: "search-button" do %>
-        <input type="submit" value="検索" class="btn btn-info">
-        <%= f.submit :submit, id: "q_submit", style: "display: none;"%>
-      <% end %>
-    <% end %>
-  </div>
+      <%= f.text_field :name, placeholder: '商品名', value: params[:q]&.dig(:name) %>
+    </div>
+    <div class="search-field">
+      <%= f.label :item_class_id_in, '商品分類' %>
+      <br>
+      <%= f.collection_check_boxes(:item_class_id_in, ItemClass.all, :id, :name) %>
+    </div>
+    <%= f.submit '検索' %>
+  <% end %>
+<% if user_signed_in? %>
   <p>注文中の商品</p>
   <div class="album py-5 bg-light">
     <div class="container">
@@ -98,3 +83,4 @@
       </div>
     </div>
 <% end %>
+</div>

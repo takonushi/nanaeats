@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :create, :edit, :update]
     collection do
       delete 'destroy_all_order'
+      get 'search'
     end    
   end
 end
