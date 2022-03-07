@@ -5,7 +5,8 @@ class ItemClass < ActiveHash::Base
     { id: 2, name: 'サブ料理' },
     { id: 3, name: '汁物' },
     { id: 4, name: '飲み物' },
-    { id: 5, name: '雑用' },
+    { id: 5, name: '飲み物' },
+    { id: 6, name: '雑用' },
   ]
   include ActiveHash::Associations
   has_many :items
