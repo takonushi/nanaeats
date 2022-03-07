@@ -29,10 +29,10 @@ class OrdersController < ApplicationController
       render :edit
     end
   end
-
 end
 
 private
+
 def set_item
   @item = Item.find(params[:item_id])
 end
@@ -40,11 +40,12 @@ end
 def set_order
   @order = Order.find(params[:id])
 end
+
 def order_params
-  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today, order_status_id: 1)
+  params.require(:order).permit(:order_comment).merge(user_id: current_user.id, item_id: @item.id, order_date: Date.today,
+                                                      order_status_id: 1)
 end
 
 def item_order_params
   params.require(:item_order).permit(:quantity, :order_date, :order_comment, :order_status_id)
 end
-
