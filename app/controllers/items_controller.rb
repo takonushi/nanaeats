@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
+  #ここから実装の続き
+  before_action :set_item, only: [:show, :edit, :update]
   def index
     @orders = Order.all
     @items = Item.order(quantity: 'DESC')
@@ -19,8 +21,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     item = Item.find(params[:id])
@@ -47,6 +60,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :price, :retailer, :explanation, :quantity, :item_class_id,
