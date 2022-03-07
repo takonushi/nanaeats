@@ -24,7 +24,7 @@
   <% end %>
 
   <% if @item.user.id == current_user.id %>
-    <%= link_to "商品を編集する", "#" ,class: :"btn btn-success btn-lg" %>
+    <%= link_to "商品を編集する", edit_item_path(@item.id),class: :"btn btn-success btn-lg" %>
     <%= link_to "商品を削除する", item_path(@item.id), method: :delete, data: { confirm: '削除しますか?' }, class: :"btn btn-danger btn-lg" %>
   <% end %>
 </div>
