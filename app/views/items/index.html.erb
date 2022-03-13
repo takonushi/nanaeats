@@ -6,7 +6,7 @@
       <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class:"btn btn-danger btn-lg" %>
       <%= link_to "詳細検索", search_items_path, class:"btn btn-info btn-lg" %>
       <%= link_to "スケジュール表", schedules_path, class:"btn btn-primary btn-lg" %>
-
+      <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-info btn-lg" %>
   </div>
 <% else %>
   <div class="nav__right">

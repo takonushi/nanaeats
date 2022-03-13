@@ -1,0 +1,14 @@
+<div class="top_title">
+  <h1>名前・在庫の一括編集</h1>
+</div>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<%= form_with url: all_update_items_path, method: :put, local: true do %>
+  <% @items.each do |item| %>
+    <%= fields_for "items[]", item do |fi| %>
+      <%= fi.text_field :name %>
+      <%= fi.text_field :quantity %>
+      <br />
+    <% end %>
+  <% end %>
+  <%= submit_tag %>
+<% end %>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     collection do
       delete 'destroy_all_order'
       get 'search'
+      get 'all_edit'
+      put 'all_update'
     end    
   end
 end
