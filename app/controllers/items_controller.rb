@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  #ここから実装の続き
   before_action :set_item, only: [:show, :edit, :update]
+
   def index
     @orders = Order.all
     @items = Item.order(quantity: 'DESC')
@@ -59,6 +59,21 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def all_edit
+    @items = Item.all
+  end
+
+  def all_update
+    @items = items_params.keys.each do |id|
+      item = Item.find(id)
+      item.update_attributes(items_params[id])
+    end
+    redirect_to root_path
+  end
+
+
+
+
   private
 
   def set_item
@@ -68,5 +83,12 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price, :retailer, :explanation, :quantity, :item_class_id,
                                  :image).merge(user_id: current_user.id)
+  end
+
+  def items_params
+    params.delete(:_method)
+    params.delete(:commit)
+    params.delete(:authenticity_token)
+    params.permit(items: [:name, :quantity])[:items]
   end
 end
