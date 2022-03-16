@@ -1,0 +1,29 @@
+<h1>新機能検証用</h1>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+  
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <% @items.length.times do |i| %>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to=<%= "#{i+1}" %> aria-label="Slide <%= "#{i+2}" %>"></button>
+  <% end %>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <%= image_tag '23132827_s.jpg', height: '500px', class: "d-block w-100" %>
+    </div>
+      <% @items.each do |item| %>
+        <div class="carousel-item">
+          <%= image_tag item.image, height: '500px', class: "d-block w-100" %>
+        </div>
+      <% end %>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

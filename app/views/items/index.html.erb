@@ -7,6 +7,8 @@
       <%= link_to "詳細検索", search_items_path, class:"btn btn-info btn-lg" %>
       <%= link_to "スケジュール表", schedules_path, class:"btn btn-primary btn-lg" %>
       <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-info btn-lg" %>
+      <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-primary btn-lg" %>
+      
   </div>
 <% else %>
   <div class="nav__right">
@@ -18,7 +20,6 @@
     </div>
   </div>
 <% end %>
-<br>
 <% if user_signed_in? %>
   <div class='search-bar-contents'>
     <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
@@ -73,7 +74,7 @@
             <div class="col">
               <div class="card shadow-sm">
                 <%= link_to item_path(item.id) do %>
-                  <div class="bd-placeholder-img card-img-top">        
+                  <div class="bd-placeholder-img card-img-top">
                     <%= image_tag item.image.variant(resize: '200x200') %>
                     <% if item.quantity == 0 %>
                       <div class="not_order">

@@ -71,7 +71,9 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-
+  def new_release
+    @items = Item.all
+  end
 
 
   private
