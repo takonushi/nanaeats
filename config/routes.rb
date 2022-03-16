@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'all_edit'
       put 'all_update'
+      get 'new_release'
     end    
   end
 end
