@@ -1,8 +1,8 @@
+<% breadcrumb :EditItem, @item %>
 <div class="top_title">
   <h1>商品マスターの編集</h1>
 </div>
-
-  <div>商品の情報を入力  <%= link_to 'もどる', root_path, class:"back-btn" %></div>
+  <div>商品の情報を入力</div>
   <%= form_with model: @item, url:item_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
       <div class="img-upload">
