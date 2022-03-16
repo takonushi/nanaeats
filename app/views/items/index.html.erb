@@ -1,14 +1,14 @@
+<% breadcrumb :root %>
 <% if user_signed_in? %>
   <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
   <div class="nav__right">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-primary btn-lg" %>
-      <%= link_to "マスター管理", new_item_path, class:"btn btn-success btn-lg" %>
-      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class:"btn btn-danger btn-lg" %>
-      <%= link_to "詳細検索", search_items_path, class:"btn btn-info btn-lg" %>
-      <%= link_to "スケジュール表", schedules_path, class:"btn btn-primary btn-lg" %>
-      <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-info btn-lg" %>
-      <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-primary btn-lg" %>
-      
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary btn-lg" %>
+      <%= link_to "マスター管理", new_item_path, class:"btn btn-outline-success btn-lg" %>
+      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class:"btn btn-outline-danger btn-lg" %>
+      <%= link_to "詳細検索", search_items_path, class:"btn btn-outline-success btn-lg" %>
+      <%= link_to "スケジュール表", schedules_path, class:"btn btn-outline-secondary btn-lg" %>
+      <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-outline-info btn-lg" %>
+      <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-outline-dark btn-lg" %>
   </div>
 <% else %>
   <div class="nav__right">
@@ -20,6 +20,7 @@
     </div>
   </div>
 <% end %>
+<br>
 <% if user_signed_in? %>
   <div class='search-bar-contents'>
     <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
