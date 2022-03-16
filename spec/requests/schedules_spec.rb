@@ -12,69 +12,68 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/schedules", type: :request do
-  
+RSpec.describe '/schedules', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Schedule. As you add validations to Schedule, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Schedule.create! valid_attributes
       get schedules_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       schedule = Schedule.create! valid_attributes
       get schedule_url(schedule)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_schedule_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       schedule = Schedule.create! valid_attributes
       get edit_schedule_url(schedule)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Schedule" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Schedule' do
+        expect do
           post schedules_url, params: { schedule: valid_attributes }
-        }.to change(Schedule, :count).by(1)
+        end.to change(Schedule, :count).by(1)
       end
 
-      it "redirects to the created schedule" do
+      it 'redirects to the created schedule' do
         post schedules_url, params: { schedule: valid_attributes }
         expect(response).to redirect_to(schedule_url(Schedule.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Schedule" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Schedule' do
+        expect do
           post schedules_url, params: { schedule: invalid_attributes }
-        }.to change(Schedule, :count).by(0)
+        end.to change(Schedule, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
@@ -84,20 +83,20 @@ RSpec.describe "/schedules", type: :request do
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested schedule" do
+      it 'updates the requested schedule' do
         schedule = Schedule.create! valid_attributes
         patch schedule_url(schedule), params: { schedule: new_attributes }
         schedule.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the schedule" do
+      it 'redirects to the schedule' do
         schedule = Schedule.create! valid_attributes
         patch schedule_url(schedule), params: { schedule: new_attributes }
         schedule.reload
@@ -105,7 +104,7 @@ RSpec.describe "/schedules", type: :request do
       end
     end
 
-    context "with invalid parameters" do
+    context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         schedule = Schedule.create! valid_attributes
         patch schedule_url(schedule), params: { schedule: invalid_attributes }
@@ -114,15 +113,15 @@ RSpec.describe "/schedules", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested schedule" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested schedule' do
       schedule = Schedule.create! valid_attributes
-      expect {
+      expect do
         delete schedule_url(schedule)
-      }.to change(Schedule, :count).by(-1)
+      end.to change(Schedule, :count).by(-1)
     end
 
-    it "redirects to the schedules list" do
+    it 'redirects to the schedules list' do
       schedule = Schedule.create! valid_attributes
       delete schedule_url(schedule)
       expect(response).to redirect_to(schedules_url)

@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def destroy
     item = Item.find(params[:id])
     item.destroy if current_user.id == item.user_id && item.order.nil?
@@ -74,7 +73,6 @@ class ItemsController < ApplicationController
   def new_release
     @items = Item.all
   end
-
 
   private
 
