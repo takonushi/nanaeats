@@ -1,5 +1,6 @@
 <h1>新機能検証用</h1>
 <% breadcrumb :NewRelease %>
+<h3>スライドショー</h3>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
   
@@ -28,3 +29,19 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<h3>食材占い</h3>
+<h3>食材ルーレット</h3>
+<div class = "slot", id="slot">
+  <div class= "slot1", id= "slot1">
+    <%= image_tag @items[rand(@items.length)].image, size: '200x200' %>
+    <input type="button", value="Stop", id="slot-button1">
+  </div>
+  <div class= "slot2", id= "slot2">
+    <%= image_tag @items[rand(@items.length)].image, size: '200x200' %>
+    <input type="button", value="Stop", id="slot-button2">
+  </div>
+  <div class= "slot3", id= "slot3">
+    <%= image_tag @items[rand(@items.length)].image, size: '200x200' %>
+    <input type="button", value="Stop", id="slot-button3">
+  </div>

@@ -1,30 +1,31 @@
 <% breadcrumb :root %>
 <% if user_signed_in? %>
   <p><%= "#{current_user.nickname}さんがログインしています。" %></p>
-  <div class="nav__right">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary btn-lg" %>
-      <%= link_to "マスター管理", new_item_path, class:"btn btn-outline-success btn-lg" %>
-      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class:"btn btn-outline-danger btn-lg" %>
-      <%= link_to "詳細検索", search_items_path, class:"btn btn-outline-success btn-lg" %>
-      <%= link_to "スケジュール表", schedules_path, class:"btn btn-outline-secondary btn-lg" %>
-      <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-outline-info btn-lg" %>
-      <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-outline-dark btn-lg" %>
+  <div class="nav__right d-flex">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary btn-lg ms-1" %>
+      <%= link_to "マスター管理", new_item_path, class:"btn btn-outline-success btn-lg ms-1" %>
+      <%= link_to "オーダークリア", destroy_all_order_items_path, method: :delete,data: { confirm: '削除しますか?' }, class:"btn btn-outline-danger btn-lg ms-1" %>
+      <%= link_to "詳細検索", search_items_path, class:"btn btn-outline-success btn-lg ms-1" %>
+      <%= link_to "スケジュール表", schedules_path, class:"btn btn-outline-secondary btn-lg ms-1" %>
+      <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-outline-info btn-lg ms-1" %>
+      <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-outline-dark btn-lg ms-1" %>
   </div>
 <% else %>
-  <div class="nav__right">
+  <p>ログインMenu</p>
+  <div class="nav__right d-flex">
     <div class="menu-btn">
-      <%= link_to "ログイン", new_user_session_path, class: :"btn btn-primary btn-lg" %>
+      <%= link_to "ログイン", new_user_session_path, class: :"btn btn-primary btn-lg ms-1" %>
     </div>
     <div class="menu-btn2">
-      <%= link_to "新規登録", new_user_registration_path, class: :"btn btn-success btn-lg" %>
+      <%= link_to "新規登録", new_user_registration_path, class: :"btn btn-success btn-lg ms-1" %>
     </div>
   </div>
 <% end %>
 <br>
 <% if user_signed_in? %>
   <div class='search-bar-contents'>
-    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form"} do |f| %>
-      <%= f.text_field :name, placeholder: '商品名から探す', class: 'input-box' %>
+    <%= search_form_for Item.ransack(params[:q]), url: search_items_path, html: {class: "search-form ms-1"} do |f| %>
+      <%= f.text_field :name, placeholder: '商品名から探す', class: 'input-box ms-1' %>
       <br>
       <%= f.label :item_class_id_in, '商品分類:' %>
       <%= f.collection_check_boxes(:item_class_id_in, ItemClass.all, :id, :name ) %>
@@ -34,7 +35,7 @@
       <% end %>
     <% end %>
   </div>
-  <p>注文中の商品</p>
+  <h4>注文中の商品</h4>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -42,7 +43,7 @@
           <div class="col">
             <div class="card shadow-sm">
               <%= link_to edit_item_order_path(order.item.id,order.id) do %>
-                <div class="bd-placeholder-img card-img-top">        
+                <div class="bd-placeholder-img card-img-top d-flex justify-content-center bg-light">        
                   <%= image_tag order.item.image.variant(resize: '200x200') %>
                 </div>
                 <div class="not_order">
@@ -65,7 +66,7 @@
         <% end %>
       </div>
   </div>
-  <p>注文可能商品一覧</p>
+  <h4>注文可能商品一覧</h4>
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -75,7 +76,7 @@
             <div class="col">
               <div class="card shadow-sm">
                 <%= link_to item_path(item.id) do %>
-                  <div class="bd-placeholder-img card-img-top">
+                  <div class="bd-placeholder-img card-img-top d-flex justify-content-center bg-light">
                     <%= image_tag item.image.variant(resize: '200x200') %>
                     <% if item.quantity == 0 %>
                       <div class="not_order">
