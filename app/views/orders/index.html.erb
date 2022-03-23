@@ -7,6 +7,6 @@
     <div>
       <%= f.text_area :order_comment, class:"form-field",id:"order-info", placeholder:"注文に対する要望・コメント" %>
     </div>
-    <%= f.submit "注文する" ,class: :"btn btn-primary btn-lg"  %>
+    <%= f.submit "注文する" ,class: :"btn btn-primary btn-lg", data: { confirm: '注文を確定しても良いですか?' }  %>
   <% end %>
 </div>
