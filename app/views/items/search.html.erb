@@ -1,6 +1,6 @@
 <% breadcrumb :SearchItems %>
 <h3>検索ページ</h3>
-<div class='item-contents' id="detailed-search-result-wrapper">
+<div class='item-contents ms-1' id="detailed-search-result-wrapper">
   <%= search_form_for @q, url: search_items_path, html: {id: "detailed-search-form"} do |f| %>
     <div class="search-field">
       <%= f.label :name, '商品名' %>
@@ -23,7 +23,7 @@
           <div class="col">
             <div class="card shadow-sm">
               <%= link_to edit_item_order_path(order.item.id,order.id) do %>
-                <div class="bd-placeholder-img card-img-top">        
+                <div class="bd-placeholder-img card-img-top d-flex justify-content-center">        
                   <%= image_tag order.item.image.variant(resize: '200x200') %>
                 </div>
                 <div class="not_order">
@@ -56,7 +56,7 @@
             <div class="col">
               <div class="card shadow-sm">
                 <%= link_to item_path(item.id) do %>
-                  <div class="bd-placeholder-img card-img-top">        
+                  <div class="bd-placeholder-img card-img-top d-flex justify-content-center">        
                     <%= image_tag item.image.variant(resize: '200x200') %>
                     <% if item.quantity == 0 %>
                       <div class="not_order">

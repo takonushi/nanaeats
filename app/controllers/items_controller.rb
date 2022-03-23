@@ -72,6 +72,20 @@ class ItemsController < ApplicationController
 
   def new_release
     @items = Item.all
+    return nil if params[:slotbutton] == nil
+    if params[:slotbutton] == "1"
+      #メイン料理の分類からランダムで1つ抽出する。
+      random_slot = Item.where(item_class_id: 1).shuffle[0..9]
+      render json:{ slot1: random_slot[0] }
+    elsif params[:slotbutton] == "2"
+      #サブ料理の分類からランダムで1つ抽出する。
+      random_slot = Item.where(item_class_id: 2).shuffle[0..9]
+      render json:{ slot2: random_slot[0] }
+    elsif params[:slotbutton] == "3"
+      #汁物の分類からランダムで1つ抽出する。
+      random_slot = Item.where(item_class_id: 3).shuffle[0..9]
+      render json:{ slot3: random_slot[0] }
+    end
   end
 
   private

@@ -1,9 +1,21 @@
 .top_title{
-  width : 100%;
+  width : 60%;
   font-size: 20px;
-  background-color: pink;
   padding: 4px;
   margin-bottom: 4px;
+  border: 2px double pink;
+}
+
+.form-field, .select-field {
+  width: 50vw;
+  font-size: 16px;
+  padding: 15px;
+  border: 1px solid #b5aaaa;
+  display: block;
+}
+
+.flex{
+  display: flex;
 }
 
 /* index.html.erbの表示に関するCSS */
@@ -23,12 +35,13 @@
   position: relative;
 }
 
-.not_order{
+.not_order {
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 25px;
+  left: 25px;
   font-size: 25px;
   color: red;
+  border: 2px double red;
 }
 
 .item-name{
