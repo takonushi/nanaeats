@@ -8,6 +8,7 @@
       <%= link_to "詳細検索", search_items_path, class:"btn btn-outline-success btn-lg ms-1" %>
       <%= link_to "スケジュール表", schedules_path, class:"btn btn-outline-secondary btn-lg ms-1" %>
       <%= link_to "在庫一括修正", all_edit_items_path, class:"btn btn-outline-info btn-lg ms-1" %>
+      <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-outline-primary btn-lg ms-1" %>
       <%= link_to "新機能検証用", new_release_items_path, class:"btn btn-outline-dark btn-lg ms-1" %>
   </div>
 <% else %>

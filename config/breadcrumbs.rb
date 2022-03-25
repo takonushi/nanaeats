@@ -42,6 +42,12 @@ crumb :Schedule do
   parent :root
 end
 
+crumb :Mypage do
+  link "マイページ", user_path
+  parent :root
+end
+
+
 crumb :NewRelease do
   link "新機能検証用", new_release_items_path
   parent :root
