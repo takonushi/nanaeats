@@ -8,7 +8,7 @@ NANAEATS
 https://nanaeats.herokuapp.com/
 
 # テスト用アカウント
-・Basic認証パスワード： xxxx  
+・Basic認証パスワード： xxxx  (※未記載)
 ・Basic認証用ID: admin  
 ・メールアドレス： testuser@test.com  
 ・パスワード： test1234  
@@ -42,21 +42,47 @@ https://nanaeats.herokuapp.com/
 https://docs.google.com/spreadsheets/d/19llQ6NsXxpbO7JDfHrssogeq17g7dGya8-WhdZcv1Ys/edit?usp=sharing
 
 # 実装した機能についての画像やGIF及びその説明
+トップページ  
+[![Image from Gyazo](https://i.gyazo.com/b2193417b8bedc0c8e5f2fc0d2c11103.png)](https://gyazo.com/b2193417b8bedc0c8e5f2fc0d2c11103)
+マスター登録
+[![Image from Gyazo](https://i.gyazo.com/5a39c060da53e2cf7229f0a9d3832f19.png)](https://gyazo.com/5a39c060da53e2cf7229f0a9d3832f19)
+商品詳細
+[![Image from Gyazo](https://i.gyazo.com/fe65094281960df6f260e37f06e00a90.png)](https://gyazo.com/fe65094281960df6f260e37f06e00a90)
+商品注文
+[![Image from Gyazo](https://i.gyazo.com/9205f1d8e53e304a332dd5c32ae74a18.png)](https://gyazo.com/9205f1d8e53e304a332dd5c32ae74a18)
+詳細検索
+[![Image from Gyazo](https://i.gyazo.com/d952a7dcbedbeada82bae9faa757a4f5.png)](https://gyazo.com/d952a7dcbedbeada82bae9faa757a4f5)
+スケジュール表
+[![Image from Gyazo](https://i.gyazo.com/9df607ab2d1f06a6170fb4c9280126b0.png)](https://gyazo.com/9df607ab2d1f06a6170fb4c9280126b0)
+在庫一括修正
+[![Image from Gyazo](https://i.gyazo.com/16f7f0773cc0e456904f4f15c4931bd9.png)](https://gyazo.com/16f7f0773cc0e456904f4f15c4931bd9)
+
 
 # 実装予定の機能
 ・ページネーション機能  
 ・行動評価システム(査定管理)  
+・注文履歴の管理、閲覧  
+・カート機能の実装  
+
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/2469b94cb6164358cb7635c56690bc18.png)](https://gyazo.com/2469b94cb6164358cb7635c56690bc18)
 
 # 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/e30367d8fef6e2a45c01d85732a6e095.png)](https://gyazo.com/e30367d8fef6e2a45c01d85732a6e095)
 
 # 開発環境
+Ruby on Rails / JavaScript
 
 # ローカルでの動作方法
+未記載
 
 # 工夫したポイント
+注文時に通知を受け取る為にLINE Notifyと連携し、通知設定を行いました。  
+利便性を上げる為になるべく画面遷移回数が少なくなるような画面設計をしました。  
+注文承諾時に在庫の数量も変更出来る様に複数テーブル(item/order)をまたぐ更新処理を実装しました。
+画面はレスポンシブデザインでの実装を行い、スマートフォンからでも見易い画面となる様に実装を行いました。
+
 
 # テーブル設計
 
